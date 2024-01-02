@@ -125,23 +125,42 @@ function netTotal(finances) {
   const average = avgChange(finances);
   console.log('Average Change : ' + average.toFixed(2)); // Display average change with two decimal places
 
+  
+  
+  function greatestIncrease(finances) {
+    let maxIncrease = 0;
+    let increasedMonth = '';
+  
+    for (let i = 1; i < finances.length; i++) {
+      const increase = finances[i][1] - finances[i - 1][1];
+      //Conditonal statement that loops to compare each increase in array to eventually find the largest increase
+      if (maxIncrease < increase) {
+        maxIncrease = increase;
+        increasedMonth = finances[i][0]; //Selects the element in the same row as the value creating the largest decrease
+      }
+    }
+    return [maxIncrease, increasedMonth];
+  }
+  
+  const [maxIncrease, increasedMonth] = greatestIncrease(finances);
+  console.log('Greatest Decrease in Profits/Losses: '+ increasedMonth + ' ($-' + Math.abs(maxIncrease) + ')') //Returns the absolute value of the increase
 
   //Function to find the largest decrease in profits/losses
   function greatestDecrease(finances) {
     let maxDecrease = 0;
-    let correspondingMonth = '';
+    let decreasedMonth = '';
   
     for (let i = 1; i < finances.length; i++) {
       const decrease = finances[i][1] - finances[i - 1][1];
       //Conditonal statement that loops to compare each decrease in array to eventually find the largest decrease
       if (maxDecrease > decrease) {
         maxDecrease = decrease;
-        correspondingMonth = finances[i][0]; //Selects the element in the same row as the value creating the largest decrease
+        decreasedMonth = finances[i][0]; 
       }
     }
   
-    return { maxDecrease, correspondingMonth };
+    return { maxDecrease, decreasedMonth };
   }
   
-  const { maxDecrease, correspondingMonth } = greatestDecrease(finances);
-  console.log('Greatest Decrease in Profits: '+ correspondingMonth + ' ($-' + Math.abs(maxDecrease) + ')')
+  const { maxDecrease, decreasedMonth } = greatestDecrease(finances);
+  console.log('Greatest Decrease in Profits/Losses: '+ decreasedMonth + ' ($-' + Math.abs(maxDecrease) + ')')
