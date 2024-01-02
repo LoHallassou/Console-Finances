@@ -12,6 +12,6 @@
 
 ## All can be found here for said company => https://lohallassou.github.io/Console-Finances/
 
-<img src=images/Console-Finances.jpg alt='Console Finances Screenshot'>
+<p><img src=.images/Console-Finances.jpg alt='Console Finances Screenshot'></p>
 
 ## By Lowell Hallassou
