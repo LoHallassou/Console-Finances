@@ -93,3 +93,19 @@ console.log('-------------------------')
 
 console.log('Total Months: ' + finances.length);
 
+//Function to sum values in the second column of array
+function netTotal(finances) {
+  let sum = 0;
+  
+  for (let i = 0; i < finances.length; i++) {
+      //Accessing the value in the second column
+      sum += finances[i][1];
+    }
+    return sum;
+  }
+  
+  //Calling back the function with the finances array
+  const total =netTotal(finances);
+  console.log('Total: $' + total);
+  
+  
