@@ -109,3 +109,18 @@ function netTotal(finances) {
   console.log('Total: $' + total);
   
   
+  function avgChange(finances) {
+   
+    let totalPreAvg = 0;
+  
+    for(let i = 1; i < finances.length; i++) {
+      // Calculating the difference between the consecutive elements in the second column
+      totalPreAvg += finances[i][1] - finances[i - 1][1];
+    }
+    // Calculating average change
+    const avg = totalPreAvg / (finances.length - 1);
+    return avg;
+  }
+  
+  const average = avgChange(finances);
+  console.log('Average Change :' + average.toFixed(2)); // Display average change with two decimal places
