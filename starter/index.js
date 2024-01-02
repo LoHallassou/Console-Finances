@@ -98,7 +98,7 @@ function netTotal(finances) {
   let sum = 0;
   
   for (let i = 0; i < finances.length; i++) {
-      //Accessing the value in the second column
+      //Adding the values in the second column
       sum += finances[i][1];
     }
     return sum;
@@ -107,8 +107,8 @@ function netTotal(finances) {
   //Calling back the function with the finances array
   const total =netTotal(finances);
   console.log('Total: $' + total);
-  
-  
+
+  //Function for the total average monthly chamge
   function avgChange(finances) {
    
     let totalPreAvg = 0;
@@ -123,4 +123,25 @@ function netTotal(finances) {
   }
   
   const average = avgChange(finances);
-  console.log('Average Change :' + average.toFixed(2)); // Display average change with two decimal places
+  console.log('Average Change : ' + average.toFixed(2)); // Display average change with two decimal places
+
+
+  //Function to find the largest decrease in profits/losses
+  function greatestDecrease(finances) {
+    let maxDecrease = 0;
+    let correspondingMonth = '';
+  
+    for (let i = 1; i < finances.length; i++) {
+      const decrease = finances[i][1] - finances[i - 1][1];
+      //Conditonal statement that loops to compare each decrease in array to eventually find the largest decrease
+      if (maxDecrease > decrease) {
+        maxDecrease = decrease;
+        correspondingMonth = finances[i][0]; //Selects the element in the same row as the value creating the largest decrease
+      }
+    }
+  
+    return { maxDecrease, correspondingMonth };
+  }
+  
+  const { maxDecrease, correspondingMonth } = greatestDecrease(finances);
+  console.log('Greatest Decrease in Profits: '+ correspondingMonth + ' ($-' + Math.abs(maxDecrease) + ')')
