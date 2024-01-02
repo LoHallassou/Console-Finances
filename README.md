@@ -11,3 +11,6 @@
 ## - The Greatest Decrease in Lossess
 
 ## All can be found here for said company => 
+
+
+## By Lowell Hallassou
